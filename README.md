@@ -1,15 +1,15 @@
-This is a kernel module for block device called MyDisk which allocates 512KB Of space in the memory and simulate that as a separate block device and partition into 3 Primary and 3 logical partitions.
+Block Device Driver
+>Download the main.c and Makefile
+>Go to the directory in which code is downloaded and give the command $ make all
+>insert the module using sudo insmod main.ko
+>Check the partition info using cat /proc/partitions
+also check using ls -l /dev/mydisk*
+and sudo fdisk -l
+>we have created 3 logical and 3 extended Parititions of the Device
+>Take root access using sudo -s command 
+>to write into disk use cat > /dev/mydisk ,type something & press enter
+to read back from the disk on command line use command xxd /dev/mydisk | less
+>remove the module using sudo rmmod main.ko
 
-Block driver can read and write into this virtual disk.
-
-Procedure :
-
-> Download the repository from github
-> In the command line opened from the directory containing these files, type make all
-> This should generate .ko files
-> push the module to kernel using command sudo insmod main.ko
-> To write into the device, goto the root mode and type this command $ cat > /dev/mydisk4
-> To read the data present in the device, type this command $ xxd /dev/mydisk4
-> To see the partitions type $ sudo fdisk -l
 
 
